@@ -83,6 +83,15 @@ local definitions = {
         return {}
       end
 
+      -- strip "vert " if it exists
+      if string.sub(arglead, 1, 5) == "vert " then
+        arglead = string.sub(arglead, 6)
+      end
+      if string.sub(cmdline, 1, 5) == "vert " then
+        cmdline = string.sub(cmdline, 6)
+      end
+      -- rest of code:
+
       local _, parsed = pcall(function()
         local target = cmdline
         local s, e = COUNT_RANGE_REGEX:match_str(target)
